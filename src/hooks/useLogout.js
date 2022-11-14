@@ -1,10 +1,11 @@
 import { useState } from 'react';
 
 // firebase
+import { auth } from '../firebase/config';
 import { signOut } from 'firebase/auth';
 
 // hooks
-import useAuthContext from './useAuthContextß';
+import useAuthContext from './useAuthContext';
 
 const useLogout = () => {
   const [error, setError] = useState(null);
@@ -16,7 +17,7 @@ const useLogout = () => {
     setIsPending(true);
 
     try {
-      await signOut();
+      await signOut(auth);
 
       dispatch({ type: 'LOGOUT' });
 
