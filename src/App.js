@@ -1,6 +1,9 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import './App.css';
 
+// components
+import Navbar from './components/Navbar/Navbar';
+
 // pages
 import Home from './pages/home/Home';
 import Login from './pages/login/Login';
@@ -10,6 +13,8 @@ function App() {
   return (
     <div className='App'>
       <BrowserRouter>
+        <Navbar />
+
         <Routes>
           <Route path='/' element={<Home />}></Route>
           <Route path='/signup' element={<Signup />}></Route>
