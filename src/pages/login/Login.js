@@ -1,12 +1,25 @@
 import { useState } from 'react';
 import './Login.css';
 
+// hookk
+import useLogin from '../../hooks/useLogin';
+
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const { error, isPending, login } = useLogin();
+
+  const reset = () => {
+    setEmail('');
+    setPassword('');
+  };
 
   const handleSubmit = e => {
     e.preventDefault();
+
+    login(email, password);
+
+    reset();
   };
 
   return (
@@ -28,7 +41,14 @@ const Login = () => {
           value={password}
         />
       </label>
-      <button className='btn'>Login</button>
+
+      {!isPending && <button className='btn'>Login</button>}
+      {isPending && (
+        <button className='btn' disabled>
+          Logging in
+        </button>
+      )}
+      {error && <p>{error}</p>}
     </form>
   );
 };
