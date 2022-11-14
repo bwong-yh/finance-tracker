@@ -7,10 +7,6 @@ const Login = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-
-    console.log('🚀 ~ file: Login.js ~ line 6 ~ Login ~ email', email);
-
-    console.log('🚀 ~ file: Login.js ~ line 8 ~ Login ~ password', password);
   };
 
   return (
