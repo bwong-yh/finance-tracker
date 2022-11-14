@@ -4,7 +4,7 @@ import './Signup.css';
 const Signup = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [displayname, setDisplayname] = useState('');
+  const [displayName, setDisplayName] = useState('');
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -25,8 +25,8 @@ const Signup = () => {
         <span>Display Name:</span>
         <input
           type='text'
-          onChange={e => setDisplayname(e.target.value)}
-          value={displayname}
+          onChange={e => setDisplayName(e.target.value)}
+          value={displayName}
         />
       </label>
       <label>
