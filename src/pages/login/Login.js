@@ -1,16 +1,36 @@
+import { useState } from 'react';
 import './Login.css';
 
 const Login = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleSubmit = e => {
+    e.preventDefault();
+
+    console.log('🚀 ~ file: Login.js ~ line 6 ~ Login ~ email', email);
+
+    console.log('🚀 ~ file: Login.js ~ line 8 ~ Login ~ password', password);
+  };
+
   return (
-    <form className='login-form'>
+    <form className='login-form' onSubmit={handleSubmit}>
       <h2>Login</h2>
       <label>
         <span>Email:</span>
-        <input type='email' name='' id='' />
+        <input
+          type='email'
+          onChange={e => setEmail(e.target.value)}
+          value={email}
+        />
       </label>
       <label>
         <span>Password:</span>
-        <input type='password' name='' id='' />
+        <input
+          type='password'
+          onChange={e => setPassword(e.target.value)}
+          value={password}
+        />
       </label>
       <button className='btn'>Login</button>
     </form>
