@@ -31,7 +31,6 @@ const AuthContextProvider = ({ children }) => {
     // check with firebase to check if user is logged it
     // a unsub() is returned from the onAuthStateChange()
     const unsub = onAuthStateChanged(auth, user => {
-      console.log(user);
       dispatch({ type: 'AUTH_IS_READY', payload: user });
       unsub();
     });
