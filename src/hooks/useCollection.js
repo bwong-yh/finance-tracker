@@ -21,7 +21,8 @@ const useCollection = coll => {
 
         // snapshot contains an array of docs of the collection
         snapshot.docs.forEach(doc => {
-          results.push({ ...doc.data, id: doc.id });
+          console.log(doc.data());
+          results.push({ ...doc.data(), id: doc.id });
         });
 
         // update state

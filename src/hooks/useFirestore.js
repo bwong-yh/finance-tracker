@@ -1,4 +1,4 @@
-import { useEffect, useReducer, useStatus } from 'react';
+import { useReducer } from 'react';
 
 // firebase & firestore
 import { db, timestamp } from '../firebase/config';
