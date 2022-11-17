@@ -8,7 +8,7 @@ const firebaseConfig = {
   projectId: 'moneypath-f93f5',
   storageBucket: 'moneypath-f93f5.appspot.com',
   messagingSenderId: '572296809277',
-  appId: '1:572296809277:web:a599bafa7d1b10eff01354',
+  appId: '1:572296809277:web:e3ee89dde23c6805f01354',
 };
 
 // init firebase & firestore
