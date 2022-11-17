@@ -1,5 +1,7 @@
+import useFirestore from '../../hooks/useFirestore';
+
 const TransactionList = ({ transactions }) => {
-  console.log(transactions);
+  const { deleteDocument } = useFirestore('transactions');
 
   return (
     <ul className='transactions'>
@@ -7,6 +9,7 @@ const TransactionList = ({ transactions }) => {
         <li key={transaction.id}>
           <p className='name'>{transaction.name}</p>
           <p className='amount'>${transaction.amount}</p>
+          <button onClick={() => deleteDocument(transaction.id)}>x</button>
         </li>
       ))}
     </ul>

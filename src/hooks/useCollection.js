@@ -19,8 +19,6 @@ const useCollection = (coll, _queryArray, _orderByArray) => {
   const queryArray = useRef(_queryArray).current;
   const orderByArray = useRef(_orderByArray).current;
 
-  console.log(orderByArray);
-
   useEffect(() => {
     let collectionRef = collection(db, coll);
 
@@ -40,7 +38,6 @@ const useCollection = (coll, _queryArray, _orderByArray) => {
 
         // snapshot contains an array of docs of the collection
         snapshot.docs.forEach(doc => {
-          console.log(doc.data());
           results.push({ ...doc.data(), id: doc.id });
         });
 
@@ -49,7 +46,6 @@ const useCollection = (coll, _queryArray, _orderByArray) => {
         setError(null);
       },
       err => {
-        console.log(err);
         setError('Could not get data.');
       }
     );
