@@ -22,7 +22,7 @@ const useCollection = (coll, _queryArray, _orderByArray) => {
   useEffect(() => {
     let collectionRef = collection(db, coll);
 
-    if (query) {
+    if (queryArray) {
       collectionRef = query(collectionRef, where(...queryArray));
     }
 

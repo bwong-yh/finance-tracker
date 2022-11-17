@@ -14,6 +14,7 @@ const Home = () => {
   const { documents, error } = useCollection(
     'transactions',
     ['uid', '==', user.uid],
+    // null,
     ['createAt', 'desc']
   );
 
