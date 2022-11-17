@@ -11,13 +11,11 @@ import useAuthContext from '../../hooks/useAuthContext';
 const Home = () => {
   // receive props from passing down within the context property
   const { user } = useAuthContext();
-  const { documents, error } = useCollection('transactions', [
-    'uid',
-    '==',
-    user.uid,
-  ]);
-
-  console.log(user);
+  const { documents, error } = useCollection(
+    'transactions',
+    ['uid', '==', user.uid],
+    ['createAt', 'desc']
+  );
 
   return (
     <div className='container'>

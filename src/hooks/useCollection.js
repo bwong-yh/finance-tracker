@@ -2,21 +2,34 @@ import { useEffect, useRef, useState } from 'react';
 
 // firebase & firestore
 import { db } from '../firebase/config';
-import { collection, onSnapshot, query, where } from 'firebase/firestore';
+import {
+  collection,
+  onSnapshot,
+  orderBy,
+  query,
+  where,
+} from 'firebase/firestore';
 
-const useCollection = (coll, _queryArray) => {
+const useCollection = (coll, _queryArray, _orderByArray) => {
   const [documents, setDocuments] = useState(null);
   const [error, setError] = useState(null);
 
   // if no useRef --> infinity loop in useEffect
   // _querArray is 'different' on every function call
   const queryArray = useRef(_queryArray).current;
+  const orderByArray = useRef(_orderByArray).current;
+
+  console.log(orderByArray);
 
   useEffect(() => {
     let collectionRef = collection(db, coll);
 
     if (query) {
       collectionRef = query(collectionRef, where(...queryArray));
+    }
+
+    if (orderByArray) {
+      collectionRef = query(collectionRef, orderBy(...orderByArray));
     }
 
     // real-time listener to updates every time a new doc is added to the collection
@@ -43,7 +56,7 @@ const useCollection = (coll, _queryArray) => {
 
     // func is returns when page is unmount, and in return unsub from the event listener
     return () => unsub();
-  }, [coll, queryArray]);
+  }, [coll, queryArray, orderByArray]);
 
   return { documents, error };
 };
