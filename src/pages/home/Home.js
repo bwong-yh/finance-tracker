@@ -1,4 +1,3 @@
-import { useOutletContext } from 'react-router-dom';
 import './Home.css';
 
 // hooks
@@ -7,11 +6,18 @@ import useCollection from '../../hooks/useCollection';
 // components
 import TransactionForm from './TransactionForm';
 import TransactionList from './TransactionList';
+import useAuthContext from '../../hooks/useAuthContext';
 
 const Home = () => {
   // receive props from passing down within the context property
-  const user = useOutletContext();
-  const { documents, error } = useCollection('transactions');
+  const { user } = useAuthContext();
+  const { documents, error } = useCollection('transactions', [
+    'uid',
+    '==',
+    user.uid,
+  ]);
+
+  console.log(user);
 
   return (
     <div className='container'>

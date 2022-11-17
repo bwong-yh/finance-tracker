@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import './Navbar.css';
 
 // hooks
@@ -8,11 +8,14 @@ import useAuthContext from '../../hooks/useAuthContext';
 const Navbar = () => {
   const { logout } = useLogout();
   const { user } = useAuthContext();
+  const navigate = useNavigate();
 
   return (
     <nav className='navbar'>
       <ul>
-        <li className='title'>MoneyPath</li>
+        <li className='title' onClick={() => navigate('/')}>
+          MoneyPath
+        </li>
 
         {!user && (
           <>
